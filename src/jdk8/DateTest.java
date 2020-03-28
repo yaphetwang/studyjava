@@ -35,7 +35,7 @@ public class DateTest {
 
         //LocalDateTime类，持有的是ISO-8601格式无时区信息的日期与时间
         LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println(dateTime);
+        System.out.println(dateTime.plusDays(2L));
         System.out.println(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         // Clock类，它通过指定一个时区，
@@ -56,6 +56,7 @@ public class DateTest {
         System.out.println("Duration in hours: " + duration.toHours());
         System.out.println("Duration in Minutes: " + duration.toMinutes());
         System.out.println("Duration: " + duration.toString());
+
 
     }
 
