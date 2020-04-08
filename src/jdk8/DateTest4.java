@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.TimeZone;
 
 /**
@@ -77,5 +78,9 @@ public class DateTest4 {
         SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyyMMddhh:mm");
         dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
         System.out.println(dateFormatGmt.format(new Date()));
+
+        Random random = new Random();
+        int i = random.nextInt(2);
+        System.out.println(i);
     }
 }
