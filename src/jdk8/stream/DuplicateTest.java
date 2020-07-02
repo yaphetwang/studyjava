@@ -1,14 +1,12 @@
 package jdk8.stream;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import jdk8.Person;
 
-import javax.sound.midi.Soundbank;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +22,7 @@ public class DuplicateTest {
         Person person2 = new Person("wyf", "sz", 19L);
         Person person3 = new Person("wyf", "sz", 20L);
         List<Person> persons = Lists.newArrayList(person, person1, person2, person3);
-        persons = persons.stream().filter(person8 -> person3.getAge() > 17).sorted(Comparator.comparing(Person::getAddress).reversed()).collect(Collectors.toList());
+        persons = persons.stream().filter(person8 -> person8.getAge() > 17).sorted(Comparator.comparing(Person::getAddress).reversed()).collect(Collectors.toList());
         System.out.println(JSON.toJSONString(persons));
 
         //根据age去重
@@ -39,7 +37,16 @@ public class DuplicateTest {
                 Collectors.collectingAndThen(
                         Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getAge() + ";" + o.getName()))), ArrayList::new)
         );
-        System.out.println(JSON.toJSONString(persons));
+        System.out.println(persons);
+
+
+        Map<String, List<Person>> itemMap = Maps.newHashMap();
+        itemMap.put("persons", persons);
+        String ss = JSON.toJSONString(itemMap);
+        System.out.println(ss);
+
+        itemMap = JSONObject.parseObject(ss, Map.class);
+        System.out.println(itemMap.get("persons"));
 
     }
 
