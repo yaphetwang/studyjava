@@ -1,24 +1,18 @@
 package jdk8;
 
-import java.util.List;
 
 /**
  * @author wangyafei
- * @date 2020/7/2 4:14 下午
+ * @date 2020/7/7 2:50 下午
  * @description
  */
-public class Person {
+public class Son {
 
     private String name;
     private String Address;
     private Long age;
 
-    private List<Son> son;
-
-    public Person() {
-    }
-
-    public Person(String name, String address, Long age) {
+    public Son(String name, String address, Long age) {
         this.name = name;
         Address = address;
         this.age = age;
@@ -48,11 +42,4 @@ public class Person {
         this.age = age;
     }
 
-    public List<Son> getSon() {
-        return son;
-    }
-
-    public void setSon(List<Son> son) {
-        this.son = son;
-    }
 }

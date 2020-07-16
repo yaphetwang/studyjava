@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import jdk8.Person;
+import jdk8.Son;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,6 +48,25 @@ public class DuplicateTest {
 
         itemMap = JSONObject.parseObject(ss, Map.class);
         System.out.println(itemMap.get("persons"));
+
+        System.out.println("===============================");
+
+
+        Person p = new Person("w", "addr", 20L);
+
+        Son son = new Son("son", "addr", 2L);
+        List<Son> sons = Lists.newArrayList(son);
+
+        p.setSon(sons);
+        String pp = JSON.toJSONString(p);
+        System.out.println("pp:" + pp);
+        Person ppp = JSONObject.parseObject(pp, Person.class);
+        System.out.println(JSON.toJSONString(ppp));
+        System.out.println(JSON.toJSONString(ppp.getSon()));
+
+
+        System.out.println(persons.stream().min(Comparator.comparing(Person::getAge)).get().getAge());
+
 
     }
 
