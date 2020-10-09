@@ -67,6 +67,8 @@ public class DuplicateTest {
 
         System.out.println(persons.stream().min(Comparator.comparing(Person::getAge)).get().getAge());
 
+        String cc = "429004";
+        System.out.println(cc.substring(0, cc.length() - 2) + "00");
 
     }
 
