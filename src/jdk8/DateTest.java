@@ -2,7 +2,9 @@ package jdk8;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * @author wyf
@@ -63,6 +65,24 @@ public class DateTest {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(Date.from(now.plusDays(2L).atZone(ZoneId.systemDefault()).toInstant()));
         System.out.println(now.plusDays(2L).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+
+        System.out.println(Optional.ofNullable(0).orElse(0).equals(1));
+
+
+        //计算一个时间点几个月之后的那天所在月的第一天
+        Instant instant = new Date().toInstant();
+        LocalDateTime localDateTime = instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+        Date fourMonthsAfterDate = Date.from(localDateTime.plusMonths(4).atZone(ZoneId.systemDefault()).toInstant());
+        Calendar c = Calendar.getInstance();
+        c.setTime(fourMonthsAfterDate);
+        c.set(Calendar.DAY_OF_MONTH, c.getActualMinimum(Calendar.DAY_OF_MONTH));
+        Date deadlineDate = c.getTime();
+        System.out.println(deadlineDate);
+
+
+
+
 
     }
 
