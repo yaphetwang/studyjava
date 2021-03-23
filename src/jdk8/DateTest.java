@@ -1,5 +1,7 @@
 package jdk8;
 
+import org.joda.time.format.DateTimeFormat;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -61,7 +63,6 @@ public class DateTest {
         System.out.println("Duration: " + duration.toString());
 
 
-
         LocalDateTime now = LocalDateTime.now();
         System.out.println(Date.from(now.plusDays(2L).atZone(ZoneId.systemDefault()).toInstant()));
         System.out.println(now.plusDays(2L).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -80,9 +81,10 @@ public class DateTest {
         Date deadlineDate = c.getTime();
         System.out.println(deadlineDate);
 
-
-
-
+        //使用joda-time LocalDateTime转date
+        org.joda.time.format.DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
+        Date date1 = org.joda.time.LocalDateTime.parse("2021-03-23", dtf).toDate();
+        System.out.println(date1);
 
     }
 
