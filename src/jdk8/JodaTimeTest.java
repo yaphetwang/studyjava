@@ -14,10 +14,11 @@ public class JodaTimeTest {
     public static void main(String[] args) {
         //增加一个月
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse("2021-02-01 00:00:00", dtf);
-        System.out.println(dateTime.plusMonths(1).toDate());
+        LocalDateTime dateTime = LocalDateTime.parse("2021-02-02 00:00:00", dtf);
+        System.out.println(dateTime.plusMonths(1).toString(dtf));
 
-
+        //下个月第一天
+        System.out.println(dateTime.plusMonths(1).withDayOfMonth(1).toString(dtf));
 
 
     }
