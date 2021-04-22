@@ -1,5 +1,6 @@
 package jdk8;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -17,15 +18,28 @@ public class JodaTimeTest {
     public static void main(String[] args) {
         //增加一个月
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse("2021-02-02 00:00:00", dtf);
-        System.out.println(dateTime.plusMonths(1).toString(dtf));
+        LocalDateTime localDateTime = LocalDateTime.parse("2021-02-02 00:00:00", dtf);
+        System.out.println(localDateTime.plusMonths(1).toString(dtf));
 
         //下个月第一天
-        System.out.println(dateTime.plusMonths(1).withDayOfMonth(1).toString(dtf));
+        System.out.println(localDateTime.plusMonths(1).withDayOfMonth(1).toString(dtf));
 
+        /**
+         * LocalDate  不包含时分秒
+         */
         DateTimeFormatter dtf1 = DateTimeFormat.forPattern("yyyy-MM-dd");
         LocalDate localDate = new LocalDate(new Date());
         System.out.println(localDate.toString(dtf1));
+        System.out.println(localDate.toDate());
+        System.out.println(LocalDate.now().toString(dtf1));
+        System.out.println(LocalDate.now().toDate());
+
+
+        /**
+         * DateTime    包含时分秒
+         */
+        DateTime dateTime = new DateTime(new Date());
+        System.out.println(dateTime.toString(dtf));
 
     }
 }
