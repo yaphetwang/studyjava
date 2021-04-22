@@ -24,6 +24,8 @@ public class JodaTimeTest {
         //下个月第一天
         System.out.println(localDateTime.plusMonths(1).withDayOfMonth(1).toString(dtf));
 
+        System.out.println(LocalDateTime.now().withDayOfMonth(1).toString(dtf));
+
         /**
          * LocalDate  不包含时分秒
          */
