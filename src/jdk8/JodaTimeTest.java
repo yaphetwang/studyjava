@@ -1,8 +1,11 @@
 package jdk8;
 
+import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Date;
 
 /**
  * @author wangyafei
@@ -20,6 +23,9 @@ public class JodaTimeTest {
         //下个月第一天
         System.out.println(dateTime.plusMonths(1).withDayOfMonth(1).toString(dtf));
 
+        DateTimeFormatter dtf1 = DateTimeFormat.forPattern("yyyy-MM-dd");
+        LocalDate localDate = new LocalDate(new Date());
+        System.out.println(localDate.toString(dtf1));
 
     }
 }
