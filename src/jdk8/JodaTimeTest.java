@@ -29,19 +29,41 @@ public class JodaTimeTest {
         /**
          * LocalDate  不包含时分秒
          */
+        System.out.println("=======LocalDate=======");
         DateTimeFormatter dtf1 = DateTimeFormat.forPattern("yyyy-MM-dd");
         LocalDate localDate = new LocalDate(new Date());
         System.out.println(localDate.toString(dtf1));
         System.out.println(localDate.toDate());
         System.out.println(LocalDate.now().toString(dtf1));
         System.out.println(LocalDate.now().toDate());
+        System.out.println(LocalDate.parse("20210401").toDate());
 
 
         /**
          * DateTime    包含时分秒
          */
+        System.out.println("=======DateTime=======");
         DateTime dateTime = new DateTime(new Date());
         System.out.println(dateTime.toString(dtf));
 
+
+
+
+
+        System.out.println(getNo("NO.000010"));
+    }
+
+    public static String getNo(String certificateNo) {
+        certificateNo = certificateNo.substring(3);
+        String no = "";
+        for (int index = 0; index <= certificateNo.length() - 1; index++) {
+            //将字符串拆开成单个的字符
+            String w = certificateNo.substring(index, index + 1);
+            if (!w.equals("0")) {
+                no = certificateNo.substring(index);
+                break;
+            }
+        }
+        return no;
     }
 }
