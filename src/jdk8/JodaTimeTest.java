@@ -47,10 +47,18 @@ public class JodaTimeTest {
         System.out.println(dateTime.toString(dtf));
 
 
-
-
+        String p = "100.0";
+        System.out.println(p.substring(0, p.indexOf(".")));
 
         System.out.println(getNo("NO.000010"));
+
+        String s = "20210130";
+        String ss = s.substring(0, 4) + "-" + s.substring(4, 6) + "-" + s.substring(6,8);
+        System.out.println(ss);
+        System.out.println(LocalDate.parse(ss).toDate());
+        System.out.println(new Date());
+
+
     }
 
     public static String getNo(String certificateNo) {
