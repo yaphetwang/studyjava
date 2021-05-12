@@ -2,10 +2,9 @@ package jdk8.commontest;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import jdk8.Son;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wangyafei

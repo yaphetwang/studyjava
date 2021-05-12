@@ -6,6 +6,8 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -53,11 +55,19 @@ public class JodaTimeTest {
         System.out.println(getNo("NO.000010"));
 
         String s = "20210130";
-        String ss = s.substring(0, 4) + "-" + s.substring(4, 6) + "-" + s.substring(6,8);
+        String ss = s.substring(0, 4) + "-" + s.substring(4, 6) + "-" + s.substring(6, 8);
         System.out.println(ss);
         System.out.println(LocalDate.parse(ss).toDate());
         System.out.println(new Date());
 
+        //大于10000000时
+        Double prince = 999999999999D;
+        Double prince1 = 111.00000000000001D;
+        Double prince2 = 111.6D;
+        System.out.println(prince1 + "");
+        System.out.println(new BigDecimal(prince1.toString()).toString());
+        System.out.println(new BigDecimal(prince.toString()).toString());
+        System.out.println(new BigDecimal(prince2.toString()).setScale(0, RoundingMode.DOWN).toString());
 
     }
 
