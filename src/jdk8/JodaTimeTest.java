@@ -40,6 +40,10 @@ public class JodaTimeTest {
         System.out.println(LocalDate.now().toDate());
         System.out.println(LocalDate.parse("20210401").toDate());
 
+        //当天日期零点
+        System.out.println(new LocalDate(new Date()).toDateTimeAtStartOfDay());
+        System.out.println(new LocalDate(new Date()).toDateTimeAtCurrentTime());
+
 
         /**
          * DateTime    包含时分秒
