@@ -45,6 +45,11 @@ public class JodaTimeTest {
         System.out.println(new LocalDate(LocalDate.parse("2021-04-01").toDate()).toDateTimeAtStartOfDay().toDate());
         System.out.println(new LocalDate(LocalDate.parse("2021-04-01").toDate()).plusDays(1).toDateTimeAtStartOfDay().toDate());
 
+        //传值为null的日期对象，处理成当前日期
+        Date date = null;
+        System.out.println(new LocalDate(date).toDate());
+
+
 
         /**
          * DateTime    包含时分秒
