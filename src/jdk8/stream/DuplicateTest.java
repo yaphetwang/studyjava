@@ -26,6 +26,11 @@ public class DuplicateTest {
         persons = persons.stream().filter(person8 -> person8.getAge() > 17).sorted(Comparator.comparing(Person::getAddress).reversed()).collect(Collectors.toList());
         System.out.println(JSON.toJSONString(persons));
 
+        Set<Long> ages = persons.stream().map(Person::getAge).collect(Collectors.toSet());
+        List<Long> ages1 = persons.stream().map(Person::getAge).distinct().collect(Collectors.toList());
+        System.out.println(ages);
+        System.out.println(ages1);
+
         //根据age去重
 //        persons = persons.stream().collect(
 //                Collectors.collectingAndThen(

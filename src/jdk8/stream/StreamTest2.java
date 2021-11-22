@@ -2,6 +2,7 @@ package jdk8.stream;
 
 import com.google.common.collect.Lists;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +53,19 @@ public class StreamTest2 {
         System.out.println(sum2);
 
         //
+        String ss = "15446577379557037702";
+        System.out.println(new BigInteger(ss));
+        System.out.println((new BigInteger(ss)).toString());
 
+
+        Double dd = 0.0;
+        BigDecimal bb = new BigDecimal(dd.toString()).
+                divide(new BigDecimal("100"), 4, BigDecimal.ROUND_HALF_UP);
+        System.out.println(bb);
+
+        BigDecimal bd = new BigDecimal("0.2255");
+        Double d = bd.multiply(new BigDecimal("100")).doubleValue();
+        System.out.println(d);
 
     }
 }

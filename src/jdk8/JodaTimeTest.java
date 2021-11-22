@@ -50,7 +50,6 @@ public class JodaTimeTest {
         System.out.println(new LocalDate(date).toDate());
 
 
-
         /**
          * DateTime    包含时分秒
          */
@@ -78,6 +77,29 @@ public class JodaTimeTest {
         System.out.println(new BigDecimal(prince1.toString()).toString());
         System.out.println(new BigDecimal(prince.toString()).toString());
         System.out.println(new BigDecimal(prince2.toString()).setScale(0, RoundingMode.DOWN).toString());
+
+
+        String dd = LocalDate.fromDateFields(new Date()).toString();
+        System.out.println(dd);
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println(LocalDateTime.parse(dd + " 23:59:59", fmt).toDate());
+
+        //当前时间所在周的第一天
+        DateTimeFormatter fmt1 = DateTimeFormat.forPattern("yyyy-MM-dd");
+        String firstOfWeek = LocalDateTime.now().withDayOfWeek(1).toString(fmt);
+        Date f = LocalDate.now().withDayOfWeek(1).toDate();
+        System.out.println(firstOfWeek);
+        System.out.println(f);
+        String lastOfWeek = LocalDate.now().withDayOfWeek(7).plusDays(1).toString(fmt);
+        Date l = LocalDate.now().withDayOfWeek(7).plusDays(1).toDate();
+        System.out.println(lastOfWeek);
+        System.out.println(l);
+
+
+        DateTimeFormatter dtf2 = DateTimeFormat.forPattern("yyyy-MM-dd");
+        String ssss = "20210120";
+        String openTime = ssss.substring(0, 4) + "-" + ssss.substring(4, 6) + "-" + ssss.substring(6, 8);
+        System.out.println(LocalDate.parse(openTime, dtf2).toDate());
 
     }
 
