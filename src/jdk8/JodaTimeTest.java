@@ -84,6 +84,13 @@ public class JodaTimeTest {
         DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         System.out.println(LocalDateTime.parse(dd + " 23:59:59", fmt).toDate());
 
+
+        DateTimeFormatter fmt11 = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+        String sss = LocalDateTime.parse("2021-12-05 22:59:00", fmt11).toString(fmt11);
+        System.out.println("=====" + sss);
+        System.out.println(LocalDateTime.fromDateFields(new Date()).toString(fmt11));
+
+
         //当前时间所在周的第一天
         DateTimeFormatter fmt1 = DateTimeFormat.forPattern("yyyy-MM-dd");
         String firstOfWeek = LocalDateTime.now().withDayOfWeek(1).toString(fmt);

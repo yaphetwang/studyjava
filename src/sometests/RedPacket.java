@@ -1,5 +1,9 @@
 package sometests;
 
+import com.alibaba.fastjson.JSONObject;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,14 +14,14 @@ import java.util.List;
  */
 public class RedPacket {
     /**
-     * 生成红包最小值 1
+     * 生成红包最小值 1分
      */
     private static final int MIN_MONEY = 1;
 
     /**
      * 生成红包最大值 90人民币
      */
-    private static final int MAX_MONEY = 200;
+//    private static final int MAX_MONEY = 200;
 
     /**
      * 最大的红包是平均值的 TIMES 倍，防止某一次分配红包较大
@@ -40,19 +44,31 @@ public class RedPacket {
 
     private int recursiveCount = 0;
 
-    public List<Integer> splitRedPacket(int money, int count) {
-        List<Integer> moneys = new LinkedList<>();
+    public List<Double> splitRedPacket(int money, int count) {
+        List<Double> moneys = new LinkedList<>();
+
+        List<Integer> moneyInt = new LinkedList<>();
 
         //计算出最大红包
+        money = money * 100;
         int max = (int) (money * TIMES);
 
         for (int i = 0; i < count; i++) {
             //随机获取红包
             int redPacket = randomRedPacket(money, MIN_MONEY, max, count - i);
-            moneys.add(redPacket);
+//            moneyInt.add(redPacket);
+
+            moneys.add(new BigDecimal(redPacket).divide(new BigDecimal(100), 2,
+                    RoundingMode.UNNECESSARY).doubleValue());
             //总金额每次减少
             money -= redPacket;
         }
+
+//        int sum = 0;
+//        for (Integer red : moneyInt) {
+//            sum += red;
+//        }
+//        System.out.println(sum);
 
         return moneys;
     }
@@ -117,21 +133,21 @@ public class RedPacket {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[10];
         RedPacket redPacket = new RedPacket();
-        List<Integer> redPackets = new RedPacket().splitRedPacket(100, 10);
+        List<Double> redPackets = redPacket.splitRedPacket(100, 10);
         System.out.println(redPackets);
 
-        int sum = 0;
-        for (Integer red : redPackets) {
-            sum += red;
+        BigDecimal b = new BigDecimal(0);
+        for (Double red : redPackets) {
+            b = b.add(new BigDecimal(red));
         }
+        System.out.println(b.doubleValue());
 
-        for (int i = 0; i < a.length; i++) {
-            sum += a[i];
-
+        String ss = "[{\"fileName\":\"附件1\",\"url\":\"https://ncz-upload.oss-cn-shanghai.aliyuncs.com/2021/12/01/687c94ac0cb84fd491e06f257bb3b116.jpg\"}]";
+        List<JSONObject> fileList = JSONObject.parseArray(ss, JSONObject.class);
+        for (JSONObject o : fileList) {
+            System.out.println(o.get("fileName"));
         }
-        System.out.println(sum);
     }
 
 }
