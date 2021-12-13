@@ -142,12 +142,6 @@ public class RedPacket {
             b = b.add(new BigDecimal(red));
         }
         System.out.println(b.doubleValue());
-
-        String ss = "[{\"fileName\":\"附件1\",\"url\":\"https://ncz-upload.oss-cn-shanghai.aliyuncs.com/2021/12/01/687c94ac0cb84fd491e06f257bb3b116.jpg\"}]";
-        List<JSONObject> fileList = JSONObject.parseArray(ss, JSONObject.class);
-        for (JSONObject o : fileList) {
-            System.out.println(o.get("fileName"));
-        }
     }
 
 }
