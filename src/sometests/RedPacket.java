@@ -142,6 +142,7 @@ public class RedPacket {
             b = b.add(new BigDecimal(red));
         }
         System.out.println(b.doubleValue());
+
     }
 
 }
