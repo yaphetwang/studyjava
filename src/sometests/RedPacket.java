@@ -141,6 +141,7 @@ public class RedPacket {
         for (Double red : redPackets) {
             b = b.add(new BigDecimal(red));
         }
+
         System.out.println(b.doubleValue());
 
     }
