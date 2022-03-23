@@ -108,6 +108,10 @@ public class JodaTimeTest {
         String openTime = ssss.substring(0, 4) + "-" + ssss.substring(4, 6) + "-" + ssss.substring(6, 8);
         System.out.println(LocalDate.parse(openTime, dtf2).toDate());
 
+
+        DateTimeFormatter dtfMonth = DateTimeFormat.forPattern("yyyyMM");
+        System.out.println(LocalDate.fromDateFields(new Date()).toString(dtfMonth));
+
     }
 
     public static String getNo(String certificateNo) {
