@@ -28,6 +28,8 @@ public class DateOperate {
 
         List<String> list = Lists.newArrayList("1", "2", "3", "4");
         System.out.println(String.join("-", list));
+
+        System.out.println("Error validating access token: ffdfdfd".contains("Error validating access token"));
     }
 
 }
