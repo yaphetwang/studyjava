@@ -4,6 +4,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -27,7 +29,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class TestThreadPoolParam {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 3, 3, SECONDS, new ArrayBlockingQueue<>(10), new ThreadPoolExecutor.DiscardPolicy());
 
         for (int i = 1; i < 5; i++) {
@@ -51,6 +53,12 @@ public class TestThreadPoolParam {
         ExecutorService executorService3 = Executors.newScheduledThreadPool(1);
 
 
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        lock.unlock();
+        Condition condition = lock.newCondition();
+        condition.await();
+        condition.signal();
     }
 
 }
