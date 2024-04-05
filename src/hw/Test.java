@@ -6,7 +6,10 @@ import java.util.*;
 /**
  * @author wangyafei
  * @date 2024/4/2 15:26
- * @description
+ * @description 空格的ASCII码值为32。
+ * 数字0到9的ASCII码值分别为48到57。
+ * 大写字母“A”到“Z”的ASCII码值分别为65到90。
+ * 小写字母“a”到“z”的ASCII码值分别为97到122。
  */
 public class Test {
 
@@ -174,6 +177,8 @@ public class Test {
                 list.add(i);
             }
         }
+        list.forEach(integer -> {
+        });
         System.out.println(list.stream().mapToInt(Integer::intValue).sum());
 
         // 判断是否素数（质数）,除了1和自身，不能被其他数整除
@@ -190,10 +195,11 @@ public class Test {
         int y = 2024;
         int m1 = 4;
         int d = 3;
-        Calendar c1 = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         //注意月份从0开始
-        c1.set(y, m1 - 1, d);
-        System.out.println(c1.get(Calendar.DAY_OF_YEAR));
+        calendar.set(y, m1 - 1, d);
+        System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
+        //LocalDate实现
         LocalDate date = LocalDate.of(2024, 4, 3);
         System.out.println(date.getDayOfYear());
 
@@ -206,7 +212,7 @@ public class Test {
         long sum = (long) Math.pow(n, 3);
         System.out.println(sum);
 
-        //=======  输出最长回文子串  ========
+        //===========  输出最长回文子串  =============
         String s12 = "cdabbacc";
         int max = 0;
         String s13 = "";
@@ -231,7 +237,55 @@ public class Test {
             System.out.println(strings1[i]);
         }
 
+        //LinkedHashMap 按插入顺序排序
+        Map<String, Integer> map1 = new LinkedHashMap<>();
+        map1.forEach((key, value) -> {
 
+        });
+        for (Map.Entry<String, Integer> entry : map1.entrySet()) {
+
+        }
+
+        //把所有的数字段提取出来，前后加上星号再放回去
+        String s14 = "Jkdi234klowe09a3";
+        System.out.println(s14.replaceAll("([0-9]+)", "*$1*"));
+
+        System.out.println(String.format("%.1f", 199.7435435));
+
+        //在字符串中找出连续最长的数字串
+        String s15 = "abcd12345ed125ss123058789";
+        String s16 = s15.replaceAll("([0-9]+)", "@$1@");
+        System.out.println(s16);
+        String[] strings2 = s16.split("@");
+        String re = "";
+        int maxLength = 0;
+        for (int i = 0; i < strings2.length; i++) {
+            if (strings2[i].matches("[0-9]+")) {
+                String temp = strings2[i];
+                if (temp.length() == maxLength) {
+                    re = re + temp;
+                }
+                if (temp.length() > maxLength) {
+                    re = temp;
+                    maxLength = temp.length();
+                }
+            }
+        }
+        System.out.println(re + "," + maxLength);
+        //或者利用非数字部分直接分割出 数字串数组
+        String[] strings3 = s15.split("[^0-9]+");
+
+        //等差数列求和
+        //等差数列求和的公式主要有两种形式，
+        // 一种是首项加末项的和乘以项数除以2，公式为：Sn=n(a1+an)/2 或 Sn=（a1+an）×n÷2。
+        // 另一种是前n项和，公式为Sn=a1*n+[n*(n-1)*d]/2 或 Sn=[n*(a1+an)]/2
+
+        //求最小公倍数
+        int a1 = 4;
+        int b1 = 35;
+        //存储a的原始值，递归过程中使用。
+        int c1 = a1;
+        System.out.println(gcb(a1, b1, c1));
 
 
     }
@@ -263,5 +317,22 @@ public class Test {
      */
     static boolean isPalindromeString(String s) {
         return s.equals(new StringBuilder(s).reverse().toString());
+    }
+
+    /**
+     * 最小公倍数
+     *
+     * @param a
+     * @param b
+     * @param c c=a
+     * @return
+     */
+    public static int gcb(int a, int b, int c) {
+        //a累加过程中永远可以整除自身，所以可以整除b时就是最小公倍数！
+        if (a % b == 0) {
+            return a;
+        }
+        //a累加自身原始值，例如a=4。  a=4,8,12,16....
+        return gcb(a + c, b, c);
     }
 }
