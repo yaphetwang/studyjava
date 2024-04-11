@@ -177,8 +177,6 @@ public class Test {
                 list.add(i);
             }
         }
-        list.forEach(integer -> {
-        });
         System.out.println(list.stream().mapToInt(Integer::intValue).sum());
 
         // 判断是否素数（质数）,除了1和自身，不能被其他数整除
@@ -212,7 +210,7 @@ public class Test {
         long sum = (long) Math.pow(n, 3);
         System.out.println(sum);
 
-        //===========  输出最长回文子串  =============
+        //===============  输出最长回文子串  ==================
         String s12 = "cdabbacc";
         int max = 0;
         String s13 = "";
@@ -229,6 +227,7 @@ public class Test {
             }
         }
         System.out.println(max + ":" + s13);
+        //查找两个字符串a，b中的最长公共子串， 同样使用上述回文子串方法 =======
 
         int a = 200;
         String bs1 = Integer.toBinaryString(a);
@@ -287,6 +286,48 @@ public class Test {
         int c1 = a1;
         System.out.println(gcb(a1, b1, c1));
 
+        //DNA序列，找固定长度子串GC出现次数最多的
+        String s17 = "AAATCACGGAGAAACCAGGTCAGCTGTCTTTACCTCGC";
+        //子串长度固定
+        int nnn = 19;
+
+        String result3 = "";
+        int count = 0;
+        for (int i = 0; i <= s17.length() - nnn; i++) {
+            String tmp = s17.substring(i, i + nnn);
+            //分母相同，只需要比较分子大小
+            int countGC = countGC(tmp);
+            if (countGC > count) {
+                result3 = tmp;
+                count = countGC;
+            }
+        }
+        System.out.println(result3);
+
+        //找出字符串中第一个只出现一次的字符
+        //设置信号量
+        int signal = 0;
+        //读取输入内容
+        String s18 = "asdfasdfo";
+        //遍历输入内容
+        for (int i = 0; i < s18.length(); i++) {
+            //判断每个字符是否出现第二次，如果存在只有一次的，设置信号量signal为1；
+            if (s18.indexOf(s18.charAt(i)) == s18.lastIndexOf(s18.charAt(i))) {
+                System.out.print(s18.charAt(i));
+                signal = 1;
+                break;
+            }
+        }
+        //如果信号量为零，证明不存在重复字符
+        if (signal == 0) {
+            System.out.println(-1);
+        }
+
+        // 特定几个字符开头，接一到两位数字
+        // if (s.matches("[WASD][0-9]{1,2}")) {}
+
+
+
 
     }
 
@@ -334,5 +375,13 @@ public class Test {
         }
         //a累加自身原始值，例如a=4。  a=4,8,12,16....
         return gcb(a + c, b, c);
+    }
+
+    public static int countGC(String tmp) {
+        String s = tmp.replaceAll("G", "");
+        String s1 = tmp.replaceAll("C", "");
+        return (tmp.length() - s.length()) + (tmp.length() - s1.length());
+
+        //return tmp.replaceAll("[^CG]","").length();
     }
 }
