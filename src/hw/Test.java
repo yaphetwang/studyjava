@@ -67,20 +67,26 @@ public class Test {
         set1.add("too");
         System.out.println(set1);
 
-        //Arrays.sort(array); 字典排序
+        //Arrays.sort(array); 数组字典排序
         String[] array = new String[5];
         //Arrays.sort(array);
+        //Collections.sort(characters); //集合字典排序
+        //Collections.min()
+        //Collections.reverse();
 
-        //十进制转二进制
+
+        // 十进制转二进制
         int num1 = 42;
         String bs = Integer.toBinaryString(num1);
         System.out.println(bs);
         System.out.println(bs.length() - bs.replaceAll("1", "").length());
+        //二进制转十进制
+        System.out.println(Integer.parseInt(bs, 2));
 
         //字母ASCII码
         //在Java中，char 类型用于表示单一的16位字符，其值必须在\u0000到\uffff（0到65535）之间，可以表示大多数常用Unicode字符。
-        //在标准ASCII码中，大写英文字母的ASCII值从65开始，到90结束，对应于字母A到Z。
-        //小写英文字母的ASCII值则从97开始，到122结束，对应于字母a到z。数字0的ASCII值为48
+        //在标准ASCII码中，大写英文字母的ASCII值从65开始，到90结束，对应于字母A到Z。
+        //小写英文字母的ASCII值则从97开始，到122结束，对应于字母a到z。数字0的ASCII值为48
         //A变a，再右移一位变为b
         char c = 'A';
         System.out.println((char) (c + 32 + 1));
@@ -109,7 +115,6 @@ public class Test {
         //正则匹配非字母的字符用来切割
         String[] words = s5.split("[^A-Za-z]");
         StringBuilder result1 = new StringBuilder();
-
         // 逆序添加分割完的单词
         for (int i = words.length - 1; i >= 0; i--) {
             result1.append(words[i]).append(" ");
@@ -187,7 +192,10 @@ public class Test {
             }
         }
         System.out.println(true);
+        //绝对值
         System.out.println(Math.abs(-2));
+        //开平方根
+        System.out.println(Math.sqrt(2));
 
         //一年当中第几天
         int y = 2024;
@@ -229,9 +237,11 @@ public class Test {
         System.out.println(max + ":" + s13);
         //查找两个字符串a，b中的最长公共子串， 同样使用上述回文子串方法 =======
 
+        System.out.println("二进制中连续1的子串");
         int a = 200;
         String bs1 = Integer.toBinaryString(a);
         String[] strings1 = bs1.split("0");
+        System.out.println(strings1.length);
         for (int i = 0; i < strings1.length; i++) {
             System.out.println(strings1[i]);
         }
@@ -326,7 +336,41 @@ public class Test {
         // 特定几个字符开头，接一到两位数字
         // if (s.matches("[WASD][0-9]{1,2}")) {}
 
+        //求小球落地5次后所经历的路程和第5次反弹的高度
+        double high = 1.0;
+        double fiveHigh = 0.0;
+        double instance = high;
+        for (int i = 0; i < 5; i++) {
+            if (i < 4) {
+                instance = instance + high;
+            }
 
+            high = high / 2;
+
+            if (i == 4) {
+                fiveHigh = high;
+            }
+        }
+        System.out.println(String.format("%.3f", instance));
+        System.out.println(String.format("%.5f", fiveHigh));
+
+        ThreadLocal local = new ThreadLocal();
+        local.set("test");
+
+        //名字字符串的最大漂亮度,每个字符有一个1-26的权重值
+        String s19 = "lisi";
+        int[] ss = new int[128];
+        for (int j = 0; j < s19.length(); j++) {
+            //巧妙使用字符 ASCII值 作为数组下标
+            ss[s19.charAt(j)]++;
+        }
+        Arrays.sort(ss);
+        int mul = 26, sum1 = 0;
+        for (int j = ss.length - 1; j >= 0 && ss[j] > 0; j--) {
+            sum1 += ss[j] * mul;
+            mul--;
+        }
+        System.out.println(sum1);
 
 
     }

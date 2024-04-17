@@ -60,26 +60,27 @@ public class PasswordCheck {
     /**
      * 检查是否满足正则
      */
+    private static Pattern bigChar = Pattern.compile("[A-Z]");
+    private static Pattern minChar = Pattern.compile("[a-z]");
+    private static Pattern number = Pattern.compile("[0-9]");
+    private static Pattern oChar = Pattern.compile("[^a-zA-Z0-9]");
+
     private static boolean getMatch(String str) {
         int count = 0;
-        Pattern bigChar = Pattern.compile("[A-Z]");
         if (bigChar.matcher(str).find()) {
             count++;
         }
-        Pattern minChar = Pattern.compile("[a-z]");
         if (minChar.matcher(str).find()) {
             count++;
         }
-        Pattern number = Pattern.compile("[0-9]");
         if (number.matcher(str).find()) {
             count++;
         }
-        Pattern oChar = Pattern.compile("[^a-zA-Z0-9]");
         if (oChar.matcher(str).find()) {
             count++;
         }
         if (count >= 3) {
-            return false;
+            return Boolean.FALSE;
         } else {
             return true;
         }
