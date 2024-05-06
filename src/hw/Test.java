@@ -231,6 +231,9 @@ public class Test {
                 if (isPalindromeString(toBeJuged)) {
                     max = (j - i) > max ? j - i : max;
                     s13 = (j - i) == max ? toBeJuged : s13;
+
+                    //找到停止j的循环
+                    break;
                 }
             }
         }
@@ -292,7 +295,7 @@ public class Test {
         //求最小公倍数
         int a1 = 4;
         int b1 = 35;
-        //存储a的原始值，递归过程中使用。
+        //存储a的原始值，递归过程中使用
         int c1 = a1;
         System.out.println(gcb(a1, b1, c1));
 
@@ -371,7 +374,6 @@ public class Test {
             mul--;
         }
         System.out.println(sum1);
-
 
     }
 
