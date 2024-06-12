@@ -27,6 +27,9 @@ import java.util.Arrays;
  * <p>
  * 说明：
  * 3，5组成一队，1，7组成一队，9自己一个队，故而输出3
+ *
+ * 使用贪心算法
+ *
  */
 public class TeamTest {
 

@@ -59,7 +59,7 @@ public class CyclicPrintAbc3 {
                     // C获取信号执行,C信号量减1,当C为0时将无法继续获得该信号量
                     C.acquire();
                     System.out.print("C");
-                    // A释放信号，A信号量加1（初始为0），此时可以获取A信号量
+                    // A释放信号，A信号量加1（此时为0），此时可以获取A信号量
                     A.release();
                 }
             } catch (InterruptedException e) {

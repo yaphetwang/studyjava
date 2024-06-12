@@ -72,7 +72,6 @@ public class StringOperateTest {
         if (upperCaseLength < lowerCaseLength) {
             return s.toLowerCase(Locale.ROOT);
         }
-
         return s;
     }
 

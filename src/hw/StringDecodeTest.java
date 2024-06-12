@@ -17,7 +17,7 @@ import java.util.Stack;
  * 此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。
  */
 public class StringDecodeTest {
-    //使用栈来进行处理
+    //使用栈来进行处理， 先进后出
 
     private static String s = "3[a2[c]]";
     private static String s1 = "abc3[cd]xyz";
@@ -71,6 +71,7 @@ public class StringDecodeTest {
 
         System.out.println(result);
 
+        //另一种处理方式
         System.out.println(decode(s));
     }
 

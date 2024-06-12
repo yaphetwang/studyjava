@@ -29,7 +29,7 @@ public class CyclicPrintAbc2 {
                 try {
                     //注意这里是不等于0，也就是说在count % 3为0之前，当前线程一直阻塞状态
                     while (state % count != 0) {
-                        // A释放lock锁
+                        // A释放lock锁, await()方法会把线程挂起，释放锁
                         A.await();
                     }
                     System.out.print("A");

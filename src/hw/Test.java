@@ -49,7 +49,7 @@ public class Test {
         //数字反转
         String s2 = "abc";
         StringBuilder sb = new StringBuilder(s2);
-        System.out.println(sb.reverse().toString());
+        System.out.println(sb.reverse());
 
         String s3 = "I am a boy";
         String[] strings = s3.split(" ");
@@ -104,6 +104,7 @@ public class Test {
 
         for (Character character : map.keySet()) {
             if (map.get(character).equals(min)) {
+                //替换为空就是删除了
                 s4 = s4.replace(String.valueOf(character), "");
             }
         }
