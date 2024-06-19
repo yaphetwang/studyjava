@@ -33,10 +33,11 @@ public class MaxNoRepeatString {
     public static void main(String[] args) {
         String s = "abcabcbb";
         String s1 = "pwwkew";
-        System.out.println(maxNoRepeatStringByHashSet(s));
-        System.out.println(maxNoRepeatStringByMap(s));
-        System.out.println(maxNoRepeatStringByArray(s));
-        System.out.println(maxNoRepeatStringByArrayJump(s));
+        String s2 = "abcdee";
+        System.out.println(maxNoRepeatStringByHashSet(s2));
+        System.out.println(maxNoRepeatStringByMap(s2));
+        System.out.println(maxNoRepeatStringByArray(s2));
+        System.out.println(maxNoRepeatStringByArrayJump(s2));
     }
 
     /**
@@ -142,7 +143,7 @@ public class MaxNoRepeatString {
     //我们可以通过记住每个字符在字符串中的索引，当遇到重复字符的时候，就可以直接跳到重复字符的后面
 
     /**
-     * 滑动窗口 + Array + 跳跃
+     * 滑动窗口 + Array (HashMap) + 跳跃
      *
      * @param s
      * @return

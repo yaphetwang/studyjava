@@ -3,6 +3,8 @@ package sometests.sort;
 import java.util.Scanner;
 
 /**
+ * @author wangyafei
+ *
  * 冒泡排序  时间复杂度 n 的平方: O(n*n)
  */
 public class BubbleSort {

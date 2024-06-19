@@ -35,8 +35,6 @@ public class SilverWeightTest {
             pq.offer(w[i]);
         }
 
-        System.out.println(pq);
-
         int count = 2;
         while (pq.size() > count) {
             //弹出，删除并返回头部元素
@@ -52,7 +50,6 @@ public class SilverWeightTest {
             } else if (x != y && y != z) {
                 pq.offer(Math.abs((z - y) - (y - x)));
             }
-
         }
 
         if (pq.isEmpty()) {
@@ -63,7 +60,6 @@ public class SilverWeightTest {
             System.out.println(Math.max(pq.peek(), pq.peek()));
         }
         System.out.println(pq.size());
-
     }
 
 }

@@ -32,7 +32,6 @@ import java.util.Arrays;
  *
  */
 public class TeamTest {
-
     public static void main(String[] args) {
         // 团队要求的最低能力值
         int bound = 9;
@@ -63,8 +62,6 @@ public class TeamTest {
                 l++;
             }
         }
-
         System.out.println(teams);
     }
-
 }

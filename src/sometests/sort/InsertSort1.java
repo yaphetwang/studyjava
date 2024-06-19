@@ -3,7 +3,10 @@ package sometests.sort;
 import java.util.Scanner;
 
 /**
+ * @author wangyafei
+ *
  * 插入排序写法二   时间复杂度 n 的平方: O(n*n)
+ *
  */
 public class InsertSort1 {
 
