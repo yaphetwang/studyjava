@@ -23,8 +23,7 @@ public class StringBracketPrintTest {
             if (d == a1 || d == b1 || d == c1) {
                 stack.push(i);
             } else if (d == a2 || d == b2 || d == c2) {
-                System.out.print(stack.pop() + " ");
-                System.out.println(i);
+                System.out.println(stack.pop() + " " + i);
             }
         }
     }
