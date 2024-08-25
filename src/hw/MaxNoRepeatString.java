@@ -34,10 +34,10 @@ public class MaxNoRepeatString {
         String s = "abcabcbb";
         String s1 = "pwwkew";
         String s2 = "abcdee";
-        System.out.println(maxNoRepeatStringByHashSet(s2));
-        System.out.println(maxNoRepeatStringByMap(s2));
-        System.out.println(maxNoRepeatStringByArray(s2));
-        System.out.println(maxNoRepeatStringByArrayJump(s2));
+        System.out.println(maxNoRepeatStringByHashSet(s));
+        System.out.println(maxNoRepeatStringByMap(s));
+        System.out.println(maxNoRepeatStringByArray(s1));
+        System.out.println(maxNoRepeatStringByArrayJump(s));
     }
 
     /**
